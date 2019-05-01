@@ -16,7 +16,7 @@
 // D - if quit, end program
 
 // while loop
-// let actionPrompt = prompt("Do you want to add, delete, print, or quit?");
+
 
 class AddressBook {
     constructor() {
@@ -31,10 +31,10 @@ class AddressBook {
         this.contacts.push(info);
     }
     deleteAt(index) {
-
+        this.contacts.splice(index, 1);
     }
     print() {
-
+        console.log(this.contacts);
     }
 }
 
@@ -48,13 +48,17 @@ class Contact {
 }
 
 const companyBook = new AddressBook();
-// if (actionPrompt === "add") {
-//     console.log(companyBook.add());
-// } else if (actionPrompt === "delete") {
-
-// }
-
-console.log(companyBook);
-
-// const personA = new Contact("Name", "Email", "Phone", "Relation");
-// console.log(personA);
+while (true) {
+    let actionPrompt = prompt("Do you want to add, delete, print, or quit?");
+    if (actionPrompt === "add") {
+        companyBook.add();
+    } else if (actionPrompt === "delete") {
+        let indexToDelete = prompt("Index to delete?");
+        companyBook.deleteAt(indexToDelete);
+    } else if (actionPrompt === "print") {
+        companyBook.print();
+    } else if (actionPrompt === "quit") {
+        console.log("Farewell");
+        break;
+    }
+}
