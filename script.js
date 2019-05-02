@@ -22,13 +22,14 @@ class AddressBook {
     constructor() {
         this.contacts = [];
     }
-    add() {
-        let name = prompt("Please enter contact name.");
-        let email = prompt("Please enter email.");
-        let phone = prompt("Please enter phone number.");
-        let relation = prompt("Please enter your relation.");
-        let info = new Contact(name, email, phone, relation);
-        this.contacts.push(info);
+    add(info) {
+        // let name = prompt("Please enter contact name.");
+        // let email = prompt("Please enter email.");
+        // let phone = prompt("Please enter phone number.");
+        // let relation = prompt("Please enter your relation.");
+        // let info = new Contact(name, email, phone, relation);
+        this.info = info
+        this.contacts.push(this.info);
     }
     deleteAt(index) {
         this.contacts.splice(index, 1);
@@ -67,7 +68,12 @@ const companyBook = new AddressBook();
 while (true) {
     let actionPrompt = prompt("Do you want to add, delete, print, or quit?");
     if (actionPrompt === "add") {
-        companyBook.add();
+        let name = prompt("Please enter contact name.");
+        let email = prompt("Please enter email.");
+        let phone = prompt("Please enter phone number.");
+        let relation = prompt("Please enter your relation.");
+        const contactInfo = new Contact(name, email, phone, relation);
+        companyBook.add(contactInfo);
     } else if (actionPrompt === "delete") {
         // let deleteIndex = prompt("Index to delete?");
         // companyBook.deleteAt(deleteIndex);
