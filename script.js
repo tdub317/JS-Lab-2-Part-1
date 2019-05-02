@@ -23,10 +23,10 @@ class AddressBook {
         this.contacts = [];
     }
     add() {
-        let name = prompt("name?");
-        let email = prompt("email?");
-        let phone = prompt("phone?");
-        let relation = prompt("relation?");
+        let name = prompt("Please enter contact name.");
+        let email = prompt("Please enter email.");
+        let phone = prompt("Please enter phone number.");
+        let relation = prompt("Please enter your relation.");
         let info = new Contact(name, email, phone, relation);
         this.contacts.push(info);
     }
@@ -34,14 +34,23 @@ class AddressBook {
         this.contacts.splice(index, 1);
     }
     deleteByName(name) {
-        for (let i = 0; i < this.contacts.length; i++) {
+        for (let i in this.contacts) {
+            // for (let i = 0; i < this.contacts.length; i++) {
             if (this.contacts[i].name === name) {
                 this.contacts.splice(i, 1);
             }
         }
     }
     print() {
-        console.log(this.contacts);
+        // console.log(this.contacts);
+        // for (let i in this.contacts) {
+        // OR
+        // for (let i = 0; i < this.contacts.length; i++) {
+        // console.log(this.contacts[i]);
+        // }
+        for (let contactInfo of this.contacts) {
+            console.log(contactInfo);
+        }
     }
 }
 
@@ -60,8 +69,16 @@ while (true) {
     if (actionPrompt === "add") {
         companyBook.add();
     } else if (actionPrompt === "delete") {
-        let indexToDelete = prompt("Index to delete?");
-        companyBook.deleteAt(indexToDelete);
+        // let deleteIndex = prompt("Index to delete?");
+        // companyBook.deleteAt(deleteIndex);
+        let deleteIndexOrName = prompt("Do you want to delete by name or index?");
+        if (deleteIndexOrName === "name") {
+            let deleteName = prompt("Please enter the name you want to delete");
+            companyBook.deleteByName(deleteName);
+        } else if (deleteIndexOrName === "index") {
+            let deleteIndex = prompt("Please enter the index to delete.");
+            companyBook.deleteAt(deleteIndex);
+        }
     } else if (actionPrompt === "print") {
         companyBook.print();
     } else if (actionPrompt === "quit") {
