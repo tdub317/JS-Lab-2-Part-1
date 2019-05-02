@@ -33,6 +33,13 @@ class AddressBook {
     deleteAt(index) {
         this.contacts.splice(index, 1);
     }
+    deleteByName(name) {
+        for (let i = 0; i < this.contacts.length; i++) {
+            if (this.contacts[i].name === name) {
+                this.contacts.splice(i, 1);
+            }
+        }
+    }
     print() {
         console.log(this.contacts);
     }
@@ -62,3 +69,4 @@ while (true) {
         break;
     }
 }
+
