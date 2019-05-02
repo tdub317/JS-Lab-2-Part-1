@@ -50,11 +50,13 @@ class AddressBook {
         // console.log(this.contacts);
         // for (let i in this.contacts) {
         // OR
-        // for (let i = 0; i < this.contacts.length; i++) {
-        // console.log(this.contacts[i]);
-        // }
-        for (let contactInfo of this.contacts) {
-            console.log(contactInfo);
+        for (let i = 0; i < this.contacts.length; i++) {
+            // console.log(this.contacts[i]);
+            // }
+            // for (let i of this.contacts) {
+            // console.log(contactInfo);
+            console.log(`Index: ${i}, Name: ${this.contacts[i].name}, Email: ${this.contacts[i].email}, Phone: ${this.contacts[i].phone}, Relation: ${this.contacts[i].relation}`);
+
         }
     }
 }
